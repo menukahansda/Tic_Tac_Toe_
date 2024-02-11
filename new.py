@@ -72,7 +72,7 @@ root.title("Tic Tac Toe")
 # Create buttons
 buttons = []
 for i in range(9):
-    button = tk.Button(root, text=" ", font=("Helvetica", 20), width=5, height=2,
+    button = tk.Button(root, text=" ", font=("arial", 20), width=5, height=2,
                        command=lambda i=i: player_move(i))
     button.grid(row=i // 3, column=i % 3, sticky="nsew")
     buttons.append(button)
