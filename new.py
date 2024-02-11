@@ -3,34 +3,27 @@ import tkinter.messagebox
 import random
 
 # Initialize the game board
-board = [" " for _ in range(9)]
+board = [" " for i in range(9)]
 
 # Initialize variables
 player = "X"
 computer = "O"
 
-# Function to check for a winner
+# Function to check for a winning condition
+win_conditions=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 def check_winner():
-    # Check rows
-    for i in range(0, 9, 3):
-        if board[i] == board[i+1] == board[i+2] != " ":
-            return board[i]
-    # Check columns
-    for i in range(3):
-        if board[i] == board[i+3] == board[i+6] != " ":
-            return board[i]
-    # Check diagonals
-    if board[0] == board[4] == board[8] != " ":
-        return board[0]
-    if board[2] == board[4] == board[6] != " ":
-        return board[2]
-    # Check for tie
-    if " " not in board:
-        return "Tie"
+    for i in range(8):
+        condition=win_conditions[i]
+        if board[condition[0]] == board[condition[1]] == board[condition[2]] !=" ": 
+            return board[condition[0]]
+        # Check for a tie
+        if " " not in board:
+            return "Tie"
+        
     return None
 
 # Function to update the board
-def update_board(index, symbol):
+def update_board(index, symbol):           # Symbole is X or O
     board[index] = symbol
     buttons[index].config(text=symbol, state="disabled")
 
